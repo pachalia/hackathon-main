@@ -1,11 +1,13 @@
 import {Module} from '../core/module'
 
-export class ShapeModule extends Module {
+export class TimerModule extends Module {
     constructor(type, text){
         super(type, text);
     }
 
     trigger(){
-        console.log("Shape module working!")
+
     }
+
+    
 }
