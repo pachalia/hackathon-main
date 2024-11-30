@@ -14,9 +14,9 @@ export class ShapeModule extends Module {
         myCanvas.id = this.shapesList.length + 1;//надо ли?
         myCanvas.width = 200;
         myCanvas.height = 200;
-        myCanvas.style.position = absolute;
-        myCanvas.style.left = random(1, window.innerWidth)
-        myCanvas.style.top = random(1, window.innerHeight)
+        myCanvas.style.position = 'absolute';
+        myCanvas.style.left = `${random(1, window.innerWidth)}px`;
+        myCanvas.style.top = `${random(1, window.innerHeight)}px`;
         document.body.append(myCanvas);
         const ctx = myCanvas.getContext("2d");
 
@@ -25,8 +25,12 @@ export class ShapeModule extends Module {
 
     }
 
-    renderStar(canvas, randScale = 1, randColor = 'blue', randRotate = 0) {
-        canvas.scale(randScale, randScale);
+    renderStar(canvas,
+        randScale = random(20, 150),
+        randColor = 'blue',
+        randRotate = random(0, 360)) {
+
+        canvas.scale(randScale/ 150, randScale / 150);
         canvas.translate(70,70);
         canvas.rotate(randRotate * Math.PI / 180);
         canvas.beginPath();
