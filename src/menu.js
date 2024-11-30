@@ -1,13 +1,12 @@
 import {Menu} from './core/menu'
 import {TimerModule} from './modules/timer.module'
-import {ShapeModule} from './modules/shape.module'
 
 export class ContextMenu extends Menu {
 
     constructor(){
         super();
         this.menu = document.querySelector('.menu');
-        this.modulesArray = [new TimerModule("timer", "Таймер"), new ShapeModule("shape", "Фигура")];
+        this.modulesArray = [new TimerModule("timer", "Таймер")];
     }
 
     open(x, y){

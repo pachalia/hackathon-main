@@ -6,6 +6,5 @@ export class ShapeModule extends Module {
     }
 
     trigger(){
-        console.log("Shape module working!")
     }
 }
