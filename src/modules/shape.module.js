@@ -10,9 +10,9 @@ export class ShapeModule extends Module {
 
     trigger() {
         const myCanvas = document.createElement("canvas");
-        this.shapesList.push({canvas: myCanvas, id: this.shapesList.length + 1});
-
-        myCanvas.id = this.shapesList.length;
+        myCanvas.id = Date.now();
+        this.shapesList.push({canvas: myCanvas, id: myCanvas.id});
+        console.log(this.shapesList);
         myCanvas.width = 150;
         myCanvas.height = 150;
         myCanvas.style.position = 'absolute';
@@ -20,10 +20,23 @@ export class ShapeModule extends Module {
         myCanvas.style.top = `${random(1, window.innerHeight-150)}px`;
         document.body.append(myCanvas);
         const ctx = myCanvas.getContext("2d");
+
+        myCanvas.addEventListener('contextmenu',(event) => {
+            event.preventDefault();
+            this.removeShape(event.target.id);
+            event.stopPropagation();
+        });
         
         this.renderRandomShape(myCanvas, ctx);
 
     }
+    removeShape(shapeId) {
+        const shapeIndex = this.shapesList.findIndex((shape) => {
+            return shape.id === shapeId;
+        });
+        document.body.querySelector(`[id="${shapeId}"]`).remove();
+        this.shapesList.splice(shapeIndex, 1);
+    };
 
     renderRandomShape(canvas, ctx) {
         switch(random(1, 4)) {
