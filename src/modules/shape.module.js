@@ -12,7 +12,6 @@ export class ShapeModule extends Module {
         const myCanvas = document.createElement("canvas");
         myCanvas.id = Date.now();
         this.shapesList.push({canvas: myCanvas, id: myCanvas.id});
-        console.log(this.shapesList);
         myCanvas.width = 150;
         myCanvas.height = 150;
         myCanvas.style.position = 'absolute';
