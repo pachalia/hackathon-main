@@ -1,6 +1,6 @@
 import {Module} from '../core/module';
 import { random } from '../utils';
-import { randomColor } from '../utils';
+import { getRandomColor as randomColor} from '../utils';
 
 export class ShapeModule extends Module {
     constructor(type, text) {
