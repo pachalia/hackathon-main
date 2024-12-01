@@ -7,6 +7,8 @@ export class QuestionnaireModule extends Module {
 
     trigger() {
         const body = document.body
+        body.style.cssText = 'background: #DCDCDC; font-size: 20px;'
+
         //заголовок
         const nameQuestionnaire = document.createElement('h2')
         nameQuestionnaire.textContent = 'Расскажите немного о себе'
@@ -19,6 +21,7 @@ export class QuestionnaireModule extends Module {
             input.id = id
             input.name = name
             input.value = value
+            input.style.cssText = 'margin: 10px;'
             return input
         }
 
@@ -51,6 +54,7 @@ export class QuestionnaireModule extends Module {
         body.appendChild(labelCity);
 
         const inputCity = createInput('text', 'city', 'city', '');
+        inputCity.style.cssText = 'border: 2px solid #008CBA;'
         labelCity.appendChild(inputCity);
 
         //3
@@ -62,22 +66,22 @@ export class QuestionnaireModule extends Module {
 
         const drinkVar1 = createInput('checkbox', 'coffee', 'drink', 'кофе');
         drink.appendChild(drinkVar1);
-        const labelCoffee = createLabel('Кофе', 'coffee');
+        const labelCoffee = createLabel('Кофе');
         drink.appendChild(labelCoffee);
 
         const drinkVar2 = createInput('checkbox', 'tea', 'drink', 'чай');
         drink.appendChild(drinkVar2);
-        const labelTea = createLabel('Чай', 'tea');
+        const labelTea = createLabel('Чай');
         drink.appendChild(labelTea);
 
         const drinkVar3 = createInput('checkbox', 'juice', 'drink', 'сок');
         drink.appendChild(drinkVar3);
-        const labelJuice = createLabel('Сок', 'juice');
+        const labelJuice = createLabel('Сок');
         drink.appendChild(labelJuice);
 
         const drinkVar4 = createInput('checkbox', 'water', 'drink', 'вода');
         drink.appendChild(drinkVar4);
-        const labelWater = createLabel('Вода', 'water');
+        const labelWater = createLabel('Вода');
         drink.appendChild(labelWater);
 
         //4
@@ -95,6 +99,15 @@ export class QuestionnaireModule extends Module {
         //кнопка
         const button = document.createElement("button");
         button.textContent = "Отправить анкету";
+        button.style.cssText = 'background-color: white; border: 2px solid #008CBA; color: black; padding: 10px 20px; font-size: 14px; cursor: pointer;'
+
+        button.addEventListener('mouseenter', () => {
+            button.style.cssText = 'background-color: #008CBA; color: white; padding: 10px 20px; font-size: 14px; cursor: pointer;'
+        });
+
+        button.addEventListener('mouseleave', () => {
+            button.style.cssText = 'background-color: white; border: 2px solid #008CBA; color: black; padding: 10px 20px; font-size: 14px; cursor: pointer;'
+        });
         body.appendChild(button);
         //отправка анкеты
         button.onclick = this.submitForm;
