@@ -38,14 +38,14 @@ export class ClicksModule extends Module {
         })
         
         //запуск таймера
-        function startTime() {
+        const startTime = () => {
           setTimeout(() => {
             showResult()
           }, 5000)
         }
         
         //вывод результата
-        function showResult() {
+        const showResult = () => {
           const result = document.createElement('h1')
           if (numberOfClicks === 1 ) {
             result.textContent = `Вы сделали ${numberOfClicks} клик`

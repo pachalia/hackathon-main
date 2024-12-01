@@ -61,7 +61,7 @@ export class QuestionnaireModule extends Module {
         questionnaire.style.cssText = 'display: flex; flex-direction: column; width: 40%; justify-contnet: center; align-items: left; background: #DCDCDC;'
 
         //отправка анкеты
-            function submitForm() {
+            const submitForm = () => {
             //получаем значения всех полей
             const gender = document.querySelector('input[name="gender"]:checked').value;
             const city = document.getElementById("city").value;
