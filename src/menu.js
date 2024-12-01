@@ -2,17 +2,19 @@ import {Menu} from './core/menu'
 import {BackgroundModule} from "@/modules/background.module";
 import {ShapeModule} from "@/modules/shape.module";
 import {MessageModule} from "@/modules/message.module";
+import {ClicksModule} from "@/modules/clicks.module";
+import {Module} from "@/core/module";
 
 export class ContextMenu extends Menu {
 
     modulesArray = [
+        new ClicksModule('clicks', 'Считать клики (за 5 секунд)'),
+        new ShapeModule('shape','Создать фигуру'),
         new BackgroundModule('backround', 'Поменять цвет'),
-        new ShapeModule('shape','фигура'),
         new MessageModule('message', 'Вызвать сообщение')
     ]
     menu = document.querySelector('.menu')
     body = document.body
-
 
     constructor() {
         super();
@@ -43,8 +45,8 @@ export class ContextMenu extends Menu {
         this.menu.style.display = 'none'
     }
 
-    add() {
-
+    add(module) {
+        module instanceof Module ? this.modulesArray.push(module): null
     }
 
 }

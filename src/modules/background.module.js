@@ -1,4 +1,5 @@
-import {Module} from '../core/module'
+import {Module} from '@/core/module'
+import {random} from '@/utils'
 
 export class BackgroundModule extends Module {
     constructor(type,text) {
@@ -15,7 +16,7 @@ export class BackgroundModule extends Module {
         const letters = '0123456789ABCDEF';
         let color = '#';
         for (let i = 0; i < 6; i++) {
-            color += letters[Math.floor(Math.random() * 16)];
+            color += letters[random(0,15)];
         }
         return color;
     }

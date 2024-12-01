@@ -8,11 +8,13 @@ export class MessageModule extends Module {
         'Лес, природа, тишина', 'Море, волны, песок', 'Ветер, листва, шепот'
     ]
     body = document.body
+    timerId = null
     constructor(type,text) {
         super(type,text);
     }
 
     trigger() {
+       this.timerId ? clearTimeout(this.timerId) : null
        const message =document.querySelector('.message')
        message ? message.remove() : null
        const el = document.createElement('div')
@@ -25,7 +27,7 @@ export class MessageModule extends Module {
        el.style.top = '90%'
        el.style.right = '2%'
        el.style.padding = '4px'
-        setTimeout(()=>{
+       this.timerId = setTimeout(()=>{
             document.querySelector('.message').remove()
        }, 5000)
        this.body.append(el)
