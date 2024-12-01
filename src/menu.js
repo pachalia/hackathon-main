@@ -1,10 +1,12 @@
-import {Menu} from './core/menu'
+import {Menu} from '@/core/menu'
 import {BackgroundModule} from "@/modules/background.module";
 import {ShapeModule} from "@/modules/shape.module";
 import {MessageModule} from "@/modules/message.module";
 import {ClicksModule} from "@/modules/clicks.module";
 import {Module} from "@/core/module";
 import {SoundModule} from "@/modules/sound.module";
+import {TimerModule} from "@/modules/timer.module";
+import {QuestionnaireModule} from "@/modules/questionnaire.module";
 
 export class ContextMenu extends Menu {
 
@@ -13,7 +15,9 @@ export class ContextMenu extends Menu {
         new ShapeModule('shape','Создать фигуру'),
         new BackgroundModule('backround', 'Поменять цвет'),
         new MessageModule('message', 'Вызвать сообщение'),
-        new SoundModule('sound', 'Случайный звук')
+        new SoundModule('sound', 'Случайный звук'),
+        new TimerModule('timer', 'Timer'),
+        new QuestionnaireModule('question', 'Анкета')
     ]
     menu = document.querySelector('.menu')
     body = document.body
