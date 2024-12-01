@@ -1,0 +1,65 @@
+.timer_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer_circle-out{
+    width: 180px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 0px 40px #000;
+}
+
+.timer_circle-in{
+    width: 165px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    background: #262626;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0px 0px 40px #000;
+    animation: animate 1.4s ease-in-out infinite;
+}
+
+.timer_stroke{
+    width: 50%;
+    height: 100%;
+    background: #FC4B29;
+    transform-origin: right center;
+    animation: animate 1.4s ease-in-out infinite;
+    transform: rotate(0deg);
+}
+
+@keyframes animate {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animation_stop{
+    animation: none;
+}
+
+.timer_circle-mini {
+    width: 25px;
+    aspect-ratio: 1/1;
+    background: #FC4B29;
+    position: absolute;
+    top: -15px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px #FC4B29;
+}
+
+.timer_text{
+    position: absolute;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: 800;
+    color: #FC4B29;
+    text-shadow: 0px 0px 15px #FC4B29;
+}
