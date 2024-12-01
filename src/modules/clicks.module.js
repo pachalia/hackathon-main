@@ -25,6 +25,11 @@ export class ClicksModule extends Module {
         document.addEventListener('click', (event) => {
             numberOfClicks++
         })
+        
+        //обработчик события 'dblclick' на странице
+        document.addEventListener('dblclick', (event) => {
+            numberOfClicks++
+        })
 
         //обработчик события 'click' на кнопке
         btn.addEventListener('click', (event) => {
