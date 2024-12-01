@@ -1,33 +1,54 @@
-import {Module} from '../core/module'
+import {Module} from '../core/module';
 import { random } from '../utils';
+import { randomColor } from '../utils';
 
 export class ShapeModule extends Module {
     constructor(type, text) {
         super(type, text);
-        this.shapesList = {};// надо ли тут хранить формы?
+        this.shapesList = [];
     }
 
     trigger() {
-        // document.body.style.background = '#555';
-        /// #создаю канвас
         const myCanvas = document.createElement("canvas");
-        myCanvas.id = this.shapesList.length + 1;//надо ли?
+        this.shapesList.push({canvas: myCanvas, id: this.shapesList.length + 1});
+
+        myCanvas.id = this.shapesList.length;
         myCanvas.width = 150;
         myCanvas.height = 150;
         myCanvas.style.position = 'absolute';
-        myCanvas.style.left = `${random(1, window.innerWidth)}px`;
-        myCanvas.style.top = `${random(1, window.innerHeight)}px`;
+        myCanvas.style.left = `${random(1, window.innerWidth-150)}px`;
+        myCanvas.style.top = `${random(1, window.innerHeight-150)}px`;
         document.body.append(myCanvas);
         const ctx = myCanvas.getContext("2d");
+        
+        this.renderRandomShape(myCanvas, ctx);
 
-        this.renderSquare(ctx);//this.renderRandomShape(ctx);
+    }
 
-
+    renderRandomShape(canvas, ctx) {
+        switch(random(1, 4)) {
+            case 1:
+                canvas.dataset.shape = "star";
+                this.renderStar(ctx);
+                break;
+            case 2:
+                canvas.dataset.shape = "circle";
+                this.renderCircle(ctx);
+                break;
+            case 3:
+                canvas.dataset.shape = "square";
+                this.renderSquare(ctx);
+                break;
+            case 4:
+                canvas.dataset.shape = "triangle";
+                this.renderTriangle(ctx);
+                break;
+        }
     }
 
     renderStar(canvas,
         randScale = random(20, 150),
-        randColor = 'blue',
+        randColor = randomColor(),
         randRotate = random(0, 360)) {
             canvas.scale(randScale/ 150, randScale / 150);
             canvas.translate(70,70);
@@ -46,7 +67,7 @@ export class ShapeModule extends Module {
     }
     renderCircle(canvas,
         randScale = random(20, 150),
-        randColor = 'blue') {
+        randColor = randomColor()) {
             canvas.scale(randScale/ 150, randScale / 150);
             canvas.translate(75,75);
             canvas.beginPath();
@@ -58,7 +79,7 @@ export class ShapeModule extends Module {
     }
     renderSquare(canvas,
         randScale = random(20, 150),
-        randColor = 'blue',
+        randColor = randomColor(),
         randRotate = random(0, 360)) {
             canvas.scale(randScale/ 150, randScale / 150);
             canvas.translate(75, 75);
@@ -68,7 +89,7 @@ export class ShapeModule extends Module {
     }
     renderTriangle(canvas,
         randScale = random(20, 150),
-        randColor = 'blue',
+        randColor = randomColor(),
         randRotate = random(0, 360)) {
             canvas.scale(randScale/ 150, randScale / 150);
             canvas.translate(75, 75);
