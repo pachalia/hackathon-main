@@ -10,7 +10,7 @@ export class TimerModule extends Module {
         body.append(this.getTimer());
     }
 
-    getTimer(time){                              //Создание Таймера
+    getTimer(time = null){                              //Создание Таймера
         const timer = this.createTimerTemplate();
         return timer;
     }

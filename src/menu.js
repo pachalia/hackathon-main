@@ -1,5 +1,5 @@
 import {Menu} from './core/menu'
-import {TimerModule} from './modules/timer.module'
+import {TimerModule} from '@/modules/timer.module'
 
 export class ContextMenu extends Menu {
 
