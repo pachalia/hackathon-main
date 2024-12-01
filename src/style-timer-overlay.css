@@ -1,0 +1,70 @@
+.timer-modal-overlay{
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.timer-modal_form{
+    display: flex;
+    justify-content: center;
+    align-items: center;            
+    flex-wrap: wrap;
+}
+
+.timer-modal_form
+.timer-modal_background{
+    position: absolute;
+    width: 320px;
+    aspect-ratio: 1/1.25;
+    background: rgba(45, 45, 45, 0.75);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.timer-modal_form
+.timer-modal_background::before{
+    content: '';
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    transform: translate(-50%, -50%);
+    background: radial-gradient(var(--clr), transparent, transparent);
+    width: 700px;
+    aspect-ratio: 1/1;
+    opacity: 0;
+    transition: 0.5s, top 0s, left 0s;
+}
+
+.timer-modal_form
+.timer-modal_background:hover::before{
+    opacity: 1;
+}
+
+.timer-modal_form
+.timer-modal_background::after{
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 18px;
+    background: rgba(45, 45, 45, 0.9);
+}
+
+.timer-modal_input{
+    width: 280px;
+    aspect-ratio: 1/0.3;
+    position: absolute;
+    margin: 40% 5%;
+    inset: 2px;
+    border-radius: 20px;
+    border: none;
+    background: rgba(45, 45, 45, 1);
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--clr);   
+}
+
+.timer-modal_input::placeholder{
+    color: var(--clr);
+}

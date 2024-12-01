@@ -27,6 +27,6 @@ export class ContextMenu extends Menu {
     }
 
     add(){
-        //В разработке
+        
     }
 }
