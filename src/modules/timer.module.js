@@ -7,7 +7,6 @@ export class TimerModule extends Module {
 
     trigger(){
         const body = document.body;
-        //body.append(this.getTimer());
         body.append(this.createTimerTemplate());
         body.append(this.createModalOverlay());
     }
@@ -21,6 +20,7 @@ export class TimerModule extends Module {
         background.className = "timer-modal_background";
         background.style = "--clr: #FC4B29";
         const input = document.createElement('input');
+        input.className = "timer-modal_input";
         input.name = "usersTime"
         input.type = "number";
         input.placeholder = "Выберите время";
