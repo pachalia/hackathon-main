@@ -52,7 +52,6 @@ export class ClicksModule extends Module {
 
     clickHandler () {
         this.clicks++
-        console.log(this.clicks)
     }
 
 }

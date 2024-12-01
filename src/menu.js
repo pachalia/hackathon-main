@@ -4,6 +4,7 @@ import {ShapeModule} from "@/modules/shape.module";
 import {MessageModule} from "@/modules/message.module";
 import {ClicksModule} from "@/modules/clicks.module";
 import {Module} from "@/core/module";
+import {SoundModule} from "@/modules/sound.module";
 
 export class ContextMenu extends Menu {
 
@@ -11,7 +12,8 @@ export class ContextMenu extends Menu {
         new ClicksModule('clicks', 'Считать клики (за 5 секунд)'),
         new ShapeModule('shape','Создать фигуру'),
         new BackgroundModule('backround', 'Поменять цвет'),
-        new MessageModule('message', 'Вызвать сообщение')
+        new MessageModule('message', 'Вызвать сообщение'),
+        new SoundModule('sound', 'Случайный звук')
     ]
     menu = document.querySelector('.menu')
     body = document.body
