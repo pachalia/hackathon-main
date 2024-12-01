@@ -22,8 +22,8 @@ export class TimerModule extends Module {
         const input = document.createElement('input');
         input.className = "timer-modal_input";
         input.name = "usersTime"
-        input.type = "number";
-        input.placeholder = "Выберите время";
+        input.type = "text";
+        input.placeholder = "Введите дату";
         input.style = "--clr: #FC4B29";
 
         background.append(input);
@@ -40,9 +40,19 @@ export class TimerModule extends Module {
         
         form.addEventListener("submit", event => {
             event.preventDefault();
-            const userTime = event.target.elements.usersTime.value.trim();
+            //const userTime = input.innerText; 
+            const userTime = document.querySelector('.timer-modal_input').innerText;
+                 
+            /*const isDate = obj => Object.prototype.toString.call(obj) === '[object Date]';
+            if(isDate(userTime)){*/
+                this.initializeTimer(userTime);
+                this.startTimer();
+            /*}
+            else{
+                alert("Введенная строка не может быть приведена к дате!");
+                console.log(userTime);
+            }*/
             
-            !isNaN(userTime) ? this.startTimer(userTime) : null;            
         })
 
         return overlay;
@@ -75,15 +85,38 @@ export class TimerModule extends Module {
         return container;
     }
 
-    startTimer(milliseconds){
+    getTimeRemaining(endtime){
+        let time = Date.parse(endtime) - Date.parse(new Date());
+        let seconds = Math.floor( (time/1000) % 60 );  
+        let minutes = Math.floor( (time/1000/60) % 60 );  
+        let hours = Math.floor( (time/(1000*60*60)) % 24 );  
+        let days = Math.floor( time/(1000*60*60*24) );  
+        return {  
+        'total': time,  
+        'days': days,  
+        'hours': hours,  
+        'minutes': minutes,  
+        'seconds': seconds  
+        };
+    }
+
+    initializeTimer(endtime){  
+        const timer = document.querySelector('.timer_text');  
+        const timeinterval = setInterval(function(){  
+            const time = this.getTimeRemaining(endtime);  
+            timer.innerText = `${time.days}::${time.hours}::${time.minutes}::${time.seconds}`;  
+            if(time.total<=0){
+                clearInterval(timeinterval);
+                stopTimer(); 
+            }   
+        }, 1000);  
+    }
+
+    startTimer(){
         const modal = document.querySelector('.timer-modal-overlay');
         modal.remove();
         const stoppedElements = document.querySelectorAll('.animation_stop');
         stoppedElements.forEach(element => element.classList.remove("animation_stop"));
-
-        //Добавить обратный отсчет
-
-        setTimeout(this.stopTimer, milliseconds);
     }
 
     stopTimer(){
