@@ -40,19 +40,11 @@ export class TimerModule extends Module {
         
         form.addEventListener("submit", event => {
             event.preventDefault();
-            //const userTime = input.innerText; 
-            const userTime = document.querySelector('.timer-modal_input').innerText;
+            const userTime = document.querySelector('.timer-modal_input').value;
+            console.log(userTime);
                  
-            /*const isDate = obj => Object.prototype.toString.call(obj) === '[object Date]';
-            if(isDate(userTime)){*/
-                this.initializeTimer(userTime);
-                this.startTimer();
-            /*}
-            else{
-                alert("Введенная строка не может быть приведена к дате!");
-                console.log(userTime);
-            }*/
-            
+            this.initializeTimer(userTime);
+            this.startTimer();
         })
 
         return overlay;
@@ -87,6 +79,7 @@ export class TimerModule extends Module {
 
     getTimeRemaining(endtime){
         let time = Date.parse(endtime) - Date.parse(new Date());
+        console.log(time);
         let seconds = Math.floor( (time/1000) % 60 );  
         let minutes = Math.floor( (time/1000/60) % 60 );  
         let hours = Math.floor( (time/(1000*60*60)) % 24 );  
@@ -102,9 +95,10 @@ export class TimerModule extends Module {
 
     initializeTimer(endtime){  
         const timer = document.querySelector('.timer_text');  
-        const timeinterval = setInterval(function(){  
-            const time = this.getTimeRemaining(endtime);  
-            timer.innerText = `${time.days}::${time.hours}::${time.minutes}::${time.seconds}`;  
+        const timeinterval = setInterval(() =>{
+            const time = this.getTimeRemaining(endtime);
+            console.log(time);
+            timer.innerText = `${time.days}:${time.hours}:${time.minutes}:${time.seconds}`;  
             if(time.total<=0){
                 clearInterval(timeinterval);
                 stopTimer(); 
